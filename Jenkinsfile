@@ -2,7 +2,7 @@ node {
     stage('Build') { 
                 echo "checkout from SCM"
                 
-                git 'https://github.com/webweb04/useful-scripts.git'
+                git 'https://github.com/junevision/useful-scripts.git'
                 // Make the output directory.
                 
                 echo "debug"
@@ -23,8 +23,6 @@ node {
                // archiveArtifacts artifacts: 'output/*.txt', excludes: 'output/*.md'
     }
     stage('Test') { 
-      // sh " echo https://github.com/lzjun567/python_scripts |  /usr/bin/python   02_find_all_links.py >testlog.log"
-     //  sh "diff testlog.log reflog.log"
    
      sh "sh ./SUT.sh >testlog.txt "
     sh "diff testlog.txt reflog.txt"
@@ -37,6 +35,6 @@ node {
         
     }
     stage('TestResultCheck') { 
-       sh "sh checkempty.sh "
+       sh "sh checkempty.sh"
     }
 }
